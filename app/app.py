@@ -34,7 +34,7 @@ tasks = [
 def get_tasks():
     return jsonify({'tasks': tasks})
 
-@app.route('/todo/api/v1.0/task/<int:task_id>',methons=['get'])
+@app.route('/todo/api/v1.0/task/<int:task_id>',methods=['get'])
 def get_task(task_id):
     task =filter(lambda t:t['id']== task_id,tasks)
     if len(task) ==0:
