@@ -34,13 +34,12 @@ tasks = [
 def get_tasks():
     return jsonify({'tasks': tasks})
 
-@app.route('/todo/api/v1.0/task/<int:task_id>',methods=['get'])
+@app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['GET'])
 def get_task(task_id):
     task = filter(lambda t: t['id'] == task_id, tasks)
     if len(task) == 0:
         abort(404)
     return jsonify({'task': task[0]})
-
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0', port=5000)
