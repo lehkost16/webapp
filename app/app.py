@@ -1,5 +1,5 @@
 import mysql
-from flask import Flask, jsonify
+from flask import Flask, jsonify, abort
 from mysql import connector
 
 app = Flask(__name__)
@@ -33,6 +33,13 @@ tasks = [
 @app.route('/todo/api/v1.0/tasks', methods=['get'])
 def get_tasks():
     return jsonify({'tasks': tasks})
+
+def get_task():
+    task =filter(lambda t:t['id']== task_id,tasks)
+    if len(task) ==0:
+        abort(404)
+    return jsonify({'task':task[0]})
+
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0', port=5000)
