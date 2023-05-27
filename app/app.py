@@ -1,6 +1,17 @@
 from flask import Flask, jsonify
+import pymysql
 
 app = Flask(__name__)
+
+config = {
+        'user': 'root',
+        'password': 'root',
+        'host': 'db',
+        'port': '3306',
+        'database': 'knights'
+    }
+connection = pymysql.connect(**config)
+
 
 tasks = [
     {
@@ -16,6 +27,7 @@ tasks = [
         'done': False
     }
 ]
+
 
 @app.route('/todo/api/v1.0/tasks', methods=['get'])
 def get_tasks():
