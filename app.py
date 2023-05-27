@@ -15,14 +15,11 @@ tasks = [
         'description': u'Need to find a good Python tutorial on the web',
         'done': False
     }
-
 ]
-
 
 @app.route('/todo/api/v1.0/tasks', methods=['get'])
 def get_tasks():
     return jsonify({'tasks': tasks})
 
-
 if __name__ == "__main__":
-    app.run(debug=True,host='http://172.26.28.185', port=5000)
+    app.run(debug=True,host='http://172.26.28.185')
