@@ -1,16 +1,17 @@
+import mysql
 from flask import Flask, jsonify
-import pymysql
+from mysql import connector
 
 app = Flask(__name__)
 
 config = {
         'user': 'root',
-        'password': 'root',
-        'host': 'db',
+        'password': '1201',
+        'host': '172.26.28.185',
         'port': '3306',
-        'database': 'knights'
+        'database': 'database'
     }
-connection = pymysql.connect(**config)
+connection = mysql.connector.connect(**config)
 
 
 tasks = [
@@ -34,4 +35,4 @@ def get_tasks():
     return jsonify({'tasks': tasks})
 
 if __name__ == "__main__":
-    app.run(debug=True,host='http://172.26.28.185')
+    app.run(debug=True,host='http://172.26.28.185',port=5000)
