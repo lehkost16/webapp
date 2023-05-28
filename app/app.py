@@ -1,42 +1,22 @@
-import mysql
+import pymysql
 from flask import Flask, jsonify, abort
-from mysql import connector
 
 app = Flask(__name__)
 
-config = {
-        'user': 'root',
-        'password': '1201',
-        'host': 'my_mysql',
-        'port': '3306',
-        'database': 't_d'
-    }
-connection = mysql.connector.connect(**config)
+conn =pymysql.connect(host='my_mysql',port=3306,database='t_d',user='root',password='1201',charset='utf8')
+cursor =conn.cursor()
 
 
-tasks = [
-    {
-        'id': 1,
-        'title': u'Buy groceries',
-        'description': u'Milk.Chess,Pizza,Fruit,Tylenol',
-        'done': False
-    },
-    {
-        'id': 2,
-        'title': u'Learn Python',
-        'description': u'Need to find a good Python tutorial on the web',
-        'done': False
-    }
-]
+@app.route('/kingdom/api/v1.0/person', methods=['get'])
+def get_persons():
+    cursor.execute('select * from person')
+    for person in cursor.fetchall():
+        return person
+    return
 
+@app.route('/todo/api/v1.0/tasks/<int:person_id>', methods=['GET'])
+def get_task(person_id):
 
-@app.route('/todo/api/v1.0/tasks', methods=['get'])
-def get_tasks():
-    return jsonify({'tasks': tasks})
-
-@app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['GET'])
-def get_task(task_id):
-    task = filter(lambda t: t['id'] == task_id, tasks)
     if len(task) == 0:
         abort(404)
     return jsonify({'task': task[0]})
