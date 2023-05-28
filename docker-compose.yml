@@ -9,8 +9,7 @@ services:
 
   my_mysql:
     image: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    container_name: "flask_mysql"
+    container_name: "my_mysql"
     expose:
       - 3307
     ports:
