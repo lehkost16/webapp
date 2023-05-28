@@ -4,14 +4,14 @@ from mysql import connector
 
 app = Flask(__name__)
 
-# config = {
-#         'user': 'root',
-#         'password': '1201',
-#         'host': '172.26.28.185',
-#         'port': '3306',
-#         'database': 'database'
-#     }
-# connection = mysql.connector.connect(**config)
+config = {
+        'user': 'root',
+        'password': '1201',
+        'host': 'my_mysql',
+        'port': '3306',
+        'database': 't_d'
+    }
+connection = mysql.connector.connect(**config)
 
 
 tasks = [
