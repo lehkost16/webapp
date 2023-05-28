@@ -5,3 +5,20 @@ services:
     build: ./app
     ports:
       - "5000:5000"
+  order_mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: "flask_mysql"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: order
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1201
+      TZ: Asia/Shanghai
+    restart: always
+    volumes:
+      - "~/mysql/mydir:/mydir"
+      - "~/mysql/conf/my.cnf:/etc/my.cnf"
+      - "~/mysql/datadir:/var/lib/mysql"
+
