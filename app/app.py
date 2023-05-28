@@ -3,7 +3,7 @@ from flask import Flask, jsonify, abort
 
 app = Flask(__name__)
 
-conn =pymysql.connect(host='101.37.174.59',port=3306,database='t_d',user='root',password='1201',charset='utf8')
+conn =pymysql.connect(host='b8d01c9f8600',port=3306,database='t_d',user='root',password='1201',charset='utf8')
 cursor =conn.cursor()
 
 
