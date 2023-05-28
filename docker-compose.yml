@@ -5,6 +5,8 @@ services:
     build: ./app
     ports:
       - "5000:5000"
+    links:
+      - my_mysql:flask_mysql
 
   my_mysql:
     image: mysql

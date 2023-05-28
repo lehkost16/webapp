@@ -3,7 +3,7 @@ from flask import Flask, jsonify, abort
 
 app = Flask(__name__)
 
-conn =pymysql.connect(host='my_mysql',port=3306,database='t_d',user='root',password='1201',charset='utf8')
+conn =pymysql.connect(host='my_mysql',port=3306,database='',user='root',password='1201',charset='utf8')
 cursor =conn.cursor()
 
 
@@ -14,12 +14,9 @@ def get_persons():
         return person
     return
 
-@app.route('/todo/api/v1.0/tasks/<int:person_id>', methods=['GET'])
+@app.route('/todo/api/v1.0/tasks/<int:person_id>', methods=['POST'])
 def get_task(person_id):
-
-    if len(task) == 0:
-        abort(404)
-    return jsonify({'task': task[0]})
+    return
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0', port=5000)
