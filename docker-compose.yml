@@ -12,7 +12,7 @@ services:
     ports:
       - "3306:3306"
     environment:
-      - "MYSQL_ROOT_PASSWORD: 1201"
+      - "MYSQL_ROOT_PASSWORD=1201"
       - "TZ: Asia/Shanghai"
     restart: always
     volumes:
