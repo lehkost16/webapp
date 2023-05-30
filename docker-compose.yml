@@ -6,20 +6,3 @@ services:
     ports:
       - "5000:5000"
 
-
-  my_mysql:
-    image: mysql
-    container_name: "my_mysql"
-    expose:
-      - 3307
-    ports:
-      - "3306:3306"
-    environment:
-      - "MYSQL_ROOT_PASSWORD=1201"
-      - "TZ: Asia/Shanghai"
-    restart: always
-    volumes:
-      - "~/mysql/mydir:/mydir"
-      - "~/mysql/conf/my.cnf:/etc/my.cnf"
-      - "~/mysql/datadir:/var/lib/mysql"
-
